@@ -4,18 +4,51 @@
     {{> head}}
   </head>
   <body>
-    <!-- 🦁 crée une div avec l'id "root" -->
-    <!-- ℹ️ presque toutes les app React ont une "root".
-         C'est le premier nœud de notre arbre. -->
+    <div id="root"></div>
   </body>
 
   <script>
-    // 🦁 crée une div
+    const Counter = (initialValue) => {
+      const button = document.createElement('button');
+      button.innerText = typeof initialValue === 'number' ? initialValue : 0;
+      button.addEventListener('click', (e) => {
+        e.target.innerText = parseInt(e.target.innerText) + 1;
+      });
+      return button;
+    };
 
-    // 🦁 ajoute le text "Hello 👋" dedans
+    const Liste = (tab) => {
+      const liste = document.createElement('ul');
 
-    // 🦁 récupère l'élément "root"
+      tab.forEach((element) => {
+        const listElem = document.createElement('li');
+        listElem.innerText = element;
+        liste.appendChild(listElem);
+      });
 
-    // 🦁 ajoute la div dans l'élément "root"
+      return liste;
+    };
+
+    // let div = document.createElement('div');
+    // let text = document.createTextNode('Hello');
+    // div.appendChild(text);
+
+    // div.addEventListener('click', (e) => {
+    //   alert('Tu as cliqué sur hello');
+    // });
+
+    let button1 = Counter(0);
+    let button2 = Counter(5);
+    let button3 = Counter(10);
+
+    const fruits = ['banana', 'apple', 'strawberry'];
+    let listeFruit = Liste(fruits);
+
+    let root = document.getElementById('root');
+    root.appendChild(button1);
+    root.appendChild(button2);
+    root.appendChild(button3);
+
+    root.appendChild(listeFruit);
   </script>
 </html>
