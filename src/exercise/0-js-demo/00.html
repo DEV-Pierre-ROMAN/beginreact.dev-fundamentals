@@ -5,6 +5,8 @@
   </head>
   <body>
     <div>
+      <input type="number" id="base" />
+      <input type="number" id="height" />
       <button onclick="calculate()">Submit</button>
       <div id="result"></div>
     </div>
@@ -15,15 +17,21 @@
   </script>
 
   <script>
-    // 🦁 créer une fonction pour calculé l'air d'un triangle
-    // 💡 const triangleAir = (base, height) => {...}
-
-    // 🦁 Pour calculer l'air d'un triangle il faut faire
-    // base * hauteur / 2
+    const calculateTriangleAir = (base, height) => {
+      return (base * height) / 2;
+    };
 
     const calculate = () => {
-      // 🦁 calcule l'air d'un triangle de 5 de base et 10 de hauter
-      // 🦁 ajoute ce résultat dans la div result.
+      let base = document.getElementById('base').value;
+      let height = document.getElementById('height').value;
+
+      if (!base || !height) {
+        alert('veuillez renseigner une valeur pour chaque champ');
+        return;
+      }
+
+      let air = calculateTriangleAir(base, height);
+      document.getElementById('result').innerHTML = air;
     };
   </script>
 </html>
